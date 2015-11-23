@@ -14,5 +14,12 @@ def dictionary
 end
 
 def word_substituter(tweet)
-  tweet.split.map { |wrd| dictionary.has_key?(wrd) ? wrd = dictionary[wrd] : wrd }.join(" ")
+  tweet.split.map { |wrd| dictionary.has_key?(wrd.downcase) ? wrd = dictionary[wrd.downcase] : wrd }.join(" ")
 end
+
+def bulk_tweet_shortener(tweets)
+  for tweet in tweets do
+    puts word_substituter(tweet)
+  end
+end
+
