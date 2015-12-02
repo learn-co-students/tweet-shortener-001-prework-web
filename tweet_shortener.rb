@@ -1,7 +1,6 @@
 require 'pry'
-# Write your code here.
+
 def dictionary
-  #code
   { "hello" => "hi",
     "to" => "2",
     "two" => "2",
@@ -15,30 +14,24 @@ def dictionary
   }
 end
 
-
-
-def word_substituter(string)
-  tweet_array = string.split
-  dict = dictionary
-  tweet_array.each do |x|
-    dict.each do |word, replacement|
-      if x.downcase.strip.gsub(/\W+/,"") == word
-        x.gsub!(/#{word}/i,replacement)
+def word_substituter(tweet)
+  dict_hash = dictionary
+  new_tweet_array = tweet.split
+  new_tweet_array.each do |word|
+    dict_hash.each do |long, short|
+      if word.downcase.gsub(/\W+/,"") == long
+        word.gsub!(/#{long}/i, short)
       end
     end
   end
-  tweet_string = tweet_array.join(" ")
-  tweet_string
+  new_tweet_array.join(" ")
 end
 
-
-def bulk_tweet_shortener(array)
-  #code
-  array.each do |x|
-    puts word_substituter(x)
+def bulk_tweet_shortener(tweet_array)
+  tweet_array.each do |tweet|
+    puts word_substituter(tweet)
   end
 end
-
 
 def selective_tweet_shortener(tweet)
   if tweet.length > 140
@@ -48,15 +41,11 @@ def selective_tweet_shortener(tweet)
   end
 end
 
-
-
 def shortened_tweet_truncator(tweet)
-  shorty = word_substituter(tweet)
-  if shorty.length > 140
-    "#{shorty[1..137]}..."
+  new_tweet = word_substituter(tweet)
+  if new_tweet.length > 140
+    "#{new_tweet[1..137]}..."
   else
-    shorty
+    new_tweet
   end
 end
-
-
