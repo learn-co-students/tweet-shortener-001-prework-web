@@ -29,12 +29,12 @@ def selective_tweet_shortener(tweet)
   end
 end
 
-def shortened_tweet_truncator(tweet)
+def shortened_tweet_truncator(tweet)              #added missing method 'word_substituter' lines 34-37
 truncated_tweet = ""
-  if selective_tweet_shortener(tweet).length > 140
-     truncated_tweet << tweet[0..136] + "..."
+  if word_substituter(tweet).length > 140
+     truncated_tweet << word_substituter(tweet)[0..136] + "..."
    else
-     truncated_tweet << tweet
+     truncated_tweet << word_substituter(tweet)
   end
  truncated_tweet
 end
