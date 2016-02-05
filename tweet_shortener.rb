@@ -13,9 +13,7 @@ end
 
 def word_substituter(tweet)
   dictionary.each do |longs, short|
-    longs.split(", ").each do |long|
-      tweet.gsub!(/([\s\W]#{long}[\s\W])/, " #{short} ")
-    end
+    longs.split(", ").each {|long| tweet.gsub!(/([\s\W]#{long}[\s\W])/, " #{short} ")}
   end
   tweet
 end
