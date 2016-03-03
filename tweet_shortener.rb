@@ -26,7 +26,7 @@ def bulk_tweet_shortener(tweets)
 end
 
 def selective_tweet_shortener(tweet)
-  if tweet.length >= 140
+  if tweet.length > 140
     tweet.split.collect {|word, replace| dictionary.keys.include?(word) ? dictionary[word] : word}.join(" ")
   else tweet
   end
