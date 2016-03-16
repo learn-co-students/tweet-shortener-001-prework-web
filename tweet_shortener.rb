@@ -1,3 +1,5 @@
+require 'pry'
+
 def dictionary
   dictionary = {
   "hello" => "hi",
@@ -37,8 +39,9 @@ end
 
 def shortened_tweet_truncator(tweet)
   shortened_tweet = word_substituter(tweet)
+  # binding.pry
   if shortened_tweet.length > 140
-    puts "#{shortened_tweet[0...137]}..."
+    "#{shortened_tweet[1..137]}..."
   else
     return shortened_tweet
   end
