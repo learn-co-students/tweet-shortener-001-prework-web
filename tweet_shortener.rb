@@ -10,21 +10,20 @@ def dictionary
 "and" => "&"
     }
 end
-def word_substituter(string)
-    results = ""
-    string.split.each do |each_word|
+def word_substituter(tweet)
+    tweet.split.collect do |word|
     keys = dictionary.keys.flatten.join(",").split(",")
-        if    keys.include?(each_word) && each_word == "for" || each_word == "four" || each_word == "Four" || each_word == "For"
-              results << dictionary[["for, four"]] + " "
-        elsif keys.include?(each_word) && each_word == "to" || each_word == "two" || each_word == "too" || each_word == "To" || each_word == "Two" || each_word == "Too"
-              results << dictionary[["to, two, too"]] + " "
-        elsif keys.include?(each_word)
-              results << dictionary[each_word] + " "
+    low_case = word.downcase
+        if keys.include?(low_case) && low_case == "for" || low_case == "four"
+            word = dictionary[["for, four"]]
+        elsif keys.include?(low_case) && low_case == "to" || low_case == "two" || low_case == "too"
+            word = dictionary[["to, two, too"]]
+        elsif keys.include?(low_case)
+            word = dictionary[low_case]
         else
-              results << each_word + " "
+            word
         end
-    end
-    results.strip
+  end.join(" ")
 end
 
 def bulk_tweet_shortener(array)
@@ -36,6 +35,6 @@ def selective_tweet_shortener(tweet)
 end
 
 def shortened_tweet_truncator(tweet)
-  word_substituter(tweet).length > 140 ? tweet[0..139] : selective_tweet_shortener(tweet)
+  selective_tweet_shortener(tweet).length > 140 ? tweet[0..139] : selective_tweet_shortener(tweet)
 end
 
