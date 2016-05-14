@@ -21,7 +21,7 @@ def word_substituter(tweet)
     # compare each word in array against the keys in dictionary
     # when there is a match, replace word with its abbreviation
   	dictionary.each do |long_word, abbreviation|
-  		if word == long_word || word == long_word.capitalize
+  		if word.downcase == long_word
   			word.replace(abbreviation)
   		end
   	end
