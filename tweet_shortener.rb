@@ -32,6 +32,7 @@ def word_substituter(string)
 
 #   end
 # string
+# ///////////////////////////////////////////////
 string_arr = string.split(" ")
 dictionary.keys.each do |key|
   string_arr.map! {|word| word.downcase == key.to_s ? dictionary[key] : word}
