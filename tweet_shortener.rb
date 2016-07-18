@@ -58,8 +58,8 @@ def shortened_tweet_truncator(string)
   updated = word_substituter(string)
 
   if(updated.length > 140)
-    n_string = updated[1..137]
-    n_string << "..."
+    n_string = updated[0..139]
+    #n_string << "..."
   else
     updated
   end
