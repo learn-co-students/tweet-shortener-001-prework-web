@@ -1,33 +1,33 @@
-# Write your code here.
-def dictionary
+def dictionary 
   {
-  "hello" => "hi",
-  "to" => "2",
-  "two" => "2", 
-  "too" => "2",
-  "for" => "4",
-  "four" => "4",
-  "be" => "b",
-  "you" => "u",
+  "hello" => 'hi',
+  "to" => '2', 
+  "two" => '2', 
+  "too" => '2',
+  "for" => '4',
+  "four" => '4',
+  'be' => 'b',
+  'you' => 'u',
   "at" => "@",
-  "and" => "&"  
-  }
-end
-
+  "and" => "&"
+}
+end  
 
 def word_substituter(string)
-  string.split.collect do |word|
+  new_string = ""
+  string.split(" ").each do |word|
     if dictionary.keys.include?(word.downcase)
-        word = dictionary[word.downcase]
+      new_string << dictionary[word.downcase] + " "
     else
-      word    
+      new_string << word + " "
     end
-  end.join(" ")
-end
+  end
+  new_string.strip
+end      
 
-def bulk_tweet_shortener(array_of_tweets)
-  array_of_tweets.collect do |string|
-    puts word_substituter(string)
+def bulk_tweet_shortener(array)
+  array.each do |tweet|
+    puts word_substituter(tweet)
   end
 end    
 
@@ -35,38 +35,17 @@ def selective_tweet_shortener(tweet)
   if tweet.length > 140
     word_substituter(tweet)
   else
-    tweet  
+    tweet
   end
 end
 
 def shortened_tweet_truncator(tweet)
   if tweet.length > 140
-      word_substituter(tweet)
-        if word_substituter(tweet).length > 140
-          word_substituter(tweet)[0...137] << "..."
-        else
-          word_substituter(tweet)
-        end
+    word_substituter(tweet)[0...137] + "..."
   else
     tweet
   end
-end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+end      
 
 
 
