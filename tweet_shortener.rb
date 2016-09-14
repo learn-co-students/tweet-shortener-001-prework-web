@@ -17,10 +17,10 @@ def word_substituter(tweet)
   tweet_array = tweet.split(' ')
   words_to_change = dictionary.keys
   tweet_array.map! do |word|
-    if words_to_change.include? word
-      word = dictionary[word]
+    if words_to_change.include? word.downcase
+      word = dictionary[word.downcase]
     else
-      word = word
+      word
     end
   end
   tweet_shortened = tweet_array.join(' ')
@@ -29,51 +29,21 @@ end
 
 def bulk_tweet_shortener(array_of_tweets)
   array_of_tweets.each do |tweet|
-    tweet_array = tweet.split(' ')
-    words_to_change = dictionary.keys
-    tweet_array.map! do |word|
-      if words_to_change.include? word.downcase
-        word = dictionary[word.downcase]
-      else
-        word = word
-      end
-    end
-    tweet_shortened = tweet_array.join(' ')
-    puts tweet_shortened
+    puts word_substituter(tweet)
   end
 end
 
 def selective_tweet_shortener(tweet)
   if tweet.length > 140
-    tweet_array = tweet.split(' ')
-    words_to_change = dictionary.keys
-    tweet_array.map! do |word|
-      if words_to_change.include? word
-        word = dictionary[word]
-      else
-        word = word
-      end
-    end
-    tweet_shortened = tweet_array.join(' ')
-    tweet_shortened
+    word_substituter(tweet)
   else
     tweet
   end
 end
 
 def shortened_tweet_truncator(tweet)
-  if tweet.length > 140
-    tweet_array = tweet.split(' ')
-    words_to_change = dictionary.keys
-    tweet_array.map! do |word|
-      if words_to_change.include? word
-        word = dictionary[word]
-      else
-        word = word
-      end
-    end
-    tweet_shortened = tweet_array.join(' ')[0..139]
-    tweet_shortened
+  if word_substituter(tweet).length > 140
+    word_substituter(tweet)[0..135] + ' ' + '...'
   else
     tweet
   end
