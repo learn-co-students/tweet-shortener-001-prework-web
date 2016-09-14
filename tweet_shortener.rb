@@ -1,19 +1,19 @@
-def word_substituter(tweet)
-  def dictionary
-    dictionary = {
-      "hello" => "hi",
-      "to" => 2,
-      "two" => 2,
-      "too" => 2,
-      "for" => 4,
-      "four" => 4,
-      "be" => "b",
-      "you" => "u",
-      "at" => "@",
-      "and" => "&"
-    }
-  end
+def dictionary
+  dictionary = {
+    "hello" => "hi",
+    "to" => 2,
+    "two" => 2,
+    "too" => 2,
+    "for" => 4,
+    "four" => 4,
+    "be" => "b",
+    "you" => "u",
+    "at" => "@",
+    "and" => "&"
+  }
+end
 
+def word_substituter(tweet)
   tweet_array = tweet.split(' ')
   words_to_change = dictionary.keys
   tweet_array.map! do |word|
@@ -28,21 +28,6 @@ def word_substituter(tweet)
 end
 
 def bulk_tweet_shortener(array_of_tweets)
-  def dictionary
-    dictionary = {
-      "hello" => "hi",
-      "to" => 2,
-      "two" => 2,
-      "too" => 2,
-      "for" => 4,
-      "four" => 4,
-      "be" => "b",
-      "you" => "u",
-      "at" => "@",
-      "and" => "&"
-    }
-  end
-
   array_of_tweets.each do |tweet|
     tweet_array = tweet.split(' ')
     words_to_change = dictionary.keys
@@ -59,21 +44,6 @@ def bulk_tweet_shortener(array_of_tweets)
 end
 
 def selective_tweet_shortener(tweet)
-  def dictionary
-    dictionary = {
-      "hello" => "hi",
-      "to" => 2,
-      "two" => 2,
-      "too" => 2,
-      "for" => 4,
-      "four" => 4,
-      "be" => "b",
-      "you" => "u",
-      "at" => "@",
-      "and" => "&"
-    }
-  end
-
   if tweet.length > 140
     tweet_array = tweet.split(' ')
     words_to_change = dictionary.keys
