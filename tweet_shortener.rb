@@ -22,7 +22,7 @@ def word_substituter(tweet)
 while a_index < arr.length
   	w_index = 0
   	while w_index < words.length
-  		if arr[a_index] == words[w_index]
+  		if arr[a_index].downcase == words[w_index]
   			arr.delete_at(a_index)
   			arr.insert(a_index, replacements[w_index])
   		end
@@ -32,4 +32,25 @@ while a_index < arr.length
   end
   	return arr.join(" ")
 
+end
+
+def bulk_tweet_shortener(array)
+  array.each do |tweet|
+     puts word_substituter(tweet)
+  end
+end
+
+def selective_tweet_shortener(tweet)
+  if tweet.length <= 139
+    return tweet
+  else word_substituter(tweet)
+  end
+end
+
+def shortened_tweet_truncator(tweet)
+shorter_tweet = word_substituter(tweet)
+  if shorter_tweet.length >= 139
+    shorter_tweet[0..136] + "..."
+  else shorter_tweet
+  end
 end
