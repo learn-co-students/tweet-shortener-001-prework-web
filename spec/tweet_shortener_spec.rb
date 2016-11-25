@@ -1,3 +1,5 @@
+require 'pry'
+
 require 'spec_helper'
 
 describe 'tweet shortener' do
