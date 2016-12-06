@@ -65,8 +65,3 @@ string[0]
 string[0..10]
 # => "Hi there, I"
 ```
-
-
-<p data-visibility='hidden'>View <a href='https://learn.co/lessons/tweet-shortener' title='Manipulating Strings and Hashes: Tweet Shortener'>Manipulating Strings and Hashes: Tweet Shortener</a> on Learn.co and start learning to code for free.</p>
-
-<p class='util--hide'>View <a href='https://learn.co/lessons/tweet-shortener'>Iterating and Manipulating 1</a> on Learn.co and start learning to code for free.</p>
