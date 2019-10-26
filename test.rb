@@ -1,3 +1,5 @@
+require 'pry'
+
 def dictionary
     dictionary = {
         "hello" => "hi",
@@ -8,8 +10,7 @@ def dictionary
         "four" => "4",
         "you" => "u",
         "at" => "@",
-        "and" => "&",
-        "be" => "b"
+        "and" => "&"
     }
 end
 
@@ -21,30 +22,24 @@ def word_substituter(tweet)
             word
         end
     end
-    tweet_array.join(" ")
+    puts tweet_array.join(" ")
 end
 
-#word_substituter("Hey guys, can anyone teach me how to be cool? I really want to be the best at everything, you know what I mean? Tweeting is super fun you guys!!!!")
-
+=begin
 def bulk_tweet_shortener(tweet_array)
     tweet_array.each do |tweet|
         puts word_substituter(tweet)
     end
 end
-
-def selective_tweet_shortener(tweet)
-    if tweet.length > 140
-        word_substituter(tweet)
-    else
-        tweet
-    end
-end
-
+=end
 def shortened_tweet_truncator(tweet)
     shortened = word_substituter(tweet)
     if shortened.length > 140
         shortened[0..134] + "(...)"
     else
-        tweet
+        shortened
     end
 end
+
+tweet = "Hello two out of example tweets for u guys, which is weird, because I'm a writer & this is just writing & I tweet all day. for real, u guys. for real. nanan for four you"
+shortened_tweet_truncator(tweet)
